@@ -9,7 +9,7 @@ class PhrasingPhrasesController < Phrasing.parent_controller.constantize
   before_filter :authorize_editor
 
   def index
-    params[:locale] ||= I18n.default_locale
+    params[:locale] ||= I18n.locale
     query = PhrasingPhrase
     query = query.order("#{query.table_name}.key")
     query = query.where(locale: params[:locale]) unless params[:locale].blank?
